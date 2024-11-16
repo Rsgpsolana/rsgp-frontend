@@ -16,17 +16,21 @@ export default function Home() {
       </div>
       <div className={styles.Slogan}>Destined for 2.147B MCAP since 2001</div>
       <div className={styles.Address}>3oU51xU5yz7wKLRMMKAqvVVpzfuvXLKUScqyht8q2PKd</div>
-      <button className={`${styles.button}  ${styles.VisionButton}`} onClick={() => setVisible(true)}>Read about the vision</button>
-      <button className={`${styles.button}  ${styles.VisionButton}`} onClick={() => setVisible(true)}>How to buy?</button>
-      <button className={`${styles.button}  ${styles.VisionButton}`} onClick={() => setVisible(true)}>Project Roadmap</button>
-      <Dialog header="Header" visible={visible} style={{ width: '50vw' }} onHide={() => setVisible(false)}>
-        <div className={styles.scrollContainer}>
-          {/* Scroll Top */}
-          <img
+      <div className={styles.VerticalButtonsContainer}>
+        <button className={`${styles.button}  ${styles.VisionButton}`} onClick={() => setVisible(true)}>Read about the vision</button>
+        <button className={`${styles.button}  ${styles.VisionButton}`} onClick={() => setVisible(true)}>How to buy?</button>
+        <button className={`${styles.button}  ${styles.VisionButton}`} onClick={() => setVisible(true)}>Project Roadmap</button>
+      </div>
+      <Dialog visible={visible} className={styles.Dialog} onHide={() => setVisible(false)}>
+        
+        {/* Scroll Top */}
+        <img
             src="/assets/scrollTop.gif"
             alt="Scroll Top"
             className={styles.scrollTop}
           />
+        <div className={styles.scrollContainer}>
+          
 
           {/* Scroll Body */}
           <div className={styles.scrollBody}>
@@ -71,29 +75,27 @@ export default function Home() {
             </p>
             <p>Additional scrollable content here...</p>
           </div>
-
-          {/* Inverted Scroll Top */}
-          <img
+        </div>
+        {/* Inverted Scroll Top */}
+        <img
             src="/assets/scrollTop.gif"
             alt="Inverted Scroll Top"
             className={`${styles.invertedScrollTop}`}
           />
-        </div>
       </Dialog>
       <div className={styles.ButtonContainer}>
-      <a href="https://t.me/+1TgHpKCdkaAyM2Zh" target="_blank" rel="noopener noreferrer">
-        <button className={styles.button}>
-          <TGIcon className={styles.TGIcon} />
-        </button>
-      </a>
-      <a href="https://x.com/rsgoldonsol" target="_blank" rel="noopener noreferrer">
-        <button className={styles.button}>
-          <div className={styles.XIconContainer}>
-            <XIcon className={styles.XIcon} />
-          </div>
-        </button>
-      </a>
-
+        <a href="https://t.me/+1TgHpKCdkaAyM2Zh" target="_blank" rel="noopener noreferrer">
+          <button className={styles.button}>
+            <TGIcon className={styles.TGIcon} />
+          </button>
+        </a>
+        <a href="https://x.com/rsgoldonsol" target="_blank" rel="noopener noreferrer">
+          <button className={styles.button}>
+            <div className={styles.XIconContainer}>
+              <XIcon className={styles.XIcon} />
+            </div>
+          </button>
+        </a>
       </div>
     </div>
   );
