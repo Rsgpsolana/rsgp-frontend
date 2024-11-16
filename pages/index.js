@@ -9,9 +9,11 @@ export default function Home() {
   const [visible, setVisible] = useState(false)
   return (
     <div className={styles.container}>
+      <div className={styles.SplineContainer}>
       <Spline
         scene="https://prod.spline.design/4hP5r0iNFz0e7Vwr/scene.splinecode" className={styles.Spline}
       />
+      </div>
       <div className={styles.Slogan}>Destined to be 2.147B since 2001</div>
       <button className={`${styles.button}  ${styles.VisionButton}`} onClick={() => setVisible(true)}>Read about the vision</button>
       <button className={`${styles.button}  ${styles.VisionButton}`} onClick={() => setVisible(true)}>How to buy?</button>
