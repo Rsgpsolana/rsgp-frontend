@@ -107,7 +107,7 @@
 
 .Slogan {
   color: yellow;
-  font-size: 30px;
+  font-size: 32px;
   font-family: 'RunescapeFont';
 }
 
@@ -118,7 +118,7 @@
 
 .VisionButton {
   color: yellow;
-  font-size: 3rem;
+  font-size: 2rem;
   padding: 1rem 2rem;
 }
 
@@ -161,6 +161,6 @@
 
 .Address {
   color: cyan;
-  font-size: 10px;
+  font-size: 14px;
   font-family: 'RunescapeFont';
 }
