@@ -159,8 +159,8 @@
   z-index: 2;
 }
 
-.SplineContainer {
-  display: flex;
-  width: 100%;
-  height: auto;
+.Address {
+  color: cyan;
+  font-size: 10px;
+  font-family: 'RunescapeFont';
 }
