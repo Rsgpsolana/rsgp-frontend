@@ -78,8 +78,19 @@ export default function Home() {
         </div>
       </Dialog>
       <div className={styles.ButtonContainer}>
-      <button className={styles.button}><TGIcon className={styles.TGIcon} /></button>
-      <button className={styles.button}><div className={styles.XIconContainer}><XIcon className={styles.XIcon} /></div></button>
+      <a href="https://t.me/+1TgHpKCdkaAyM2Zh" target="_blank" rel="noopener noreferrer">
+        <button className={styles.button}>
+          <TGIcon className={styles.TGIcon} />
+        </button>
+      </a>
+      <a href="https://x.com/rsgoldonsol" target="_blank" rel="noopener noreferrer">
+        <button className={styles.button}>
+          <div className={styles.XIconContainer}>
+            <XIcon className={styles.XIcon} />
+          </div>
+        </button>
+      </a>
+
       </div>
     </div>
   );
