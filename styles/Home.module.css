@@ -111,6 +111,7 @@
   color: yellow;
   font-size: 32px;
   font-family: 'RunescapeFont';
+  z-index:4;
 }
 
 .Spline {
