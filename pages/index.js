@@ -36,13 +36,13 @@ export default function Home() {
           <div className={styles.scrollBody}>
           <br/>
           <br/>
-          Before the Scrolls of Skyrim, before the Battlefields of Duty, there was the Eternal Gielinor.
+          Before the scrolls of Skyrim, there was Gielinor.
           <br/>
           <br/>
-          Before the blockchain, before the miners of Bitcoin, there was the golden radiance of RuneScape Gold.
+          Before blockchain, before Bitcoin miners, there was the golden radiance of RuneScape Gold.
           <br/>
           <br/>
-          $RSGP binds us—not by chains, but by the ancient echoes of our shared longing, the lore of our collective nostalgia.
+          $RSGP binds us—not by chains, but by the lore of our collective nostalgia.
           <br/>
           <br/>
           It is not just a game. It is the path.
@@ -55,14 +55,6 @@ export default function Home() {
           </p>
           <br/>
           The sacred stack foretold, written in the stars of Solana.
-          <br/>
-          <br/>
-
-          This is not chance.
-          <br/>
-          This is not chaos.
-          <br/>
-          This is destiny.
           <br/>
           <br/>
           Those who understand will follow.
