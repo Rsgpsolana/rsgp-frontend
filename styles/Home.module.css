@@ -199,7 +199,7 @@
 }
 
 .scrollTop {
-  top: -0.6rem;
+  top: -0.4rem;
   position: absolute;
   width: 100%;
   height: auto;
@@ -208,6 +208,8 @@
 }
 
 .scrollBody {
+  text-align: center;
+  justify-content: center;
   flex: 1;
   overflow-y: auto;
   padding-inline: 50px;
@@ -238,4 +240,15 @@
 
 .Dialog {
   width: 50vw
+}
+
+.GnomeChild {
+  position: absolute;
+  bottom: 0rem;
+  right: 2rem;
+}
+
+.GreenStack {
+  font-size: 20px;
+  color: green;
 }

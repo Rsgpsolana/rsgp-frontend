@@ -1,4 +1,5 @@
 import Spline from '@splinetool/react-spline';
+import Image from 'next/image';
 import { Dialog } from 'primereact/dialog';
 import { useState } from 'react';
 import styles from '../styles/Home.module.css';
@@ -34,46 +35,48 @@ export default function Home() {
 
           {/* Scroll Body */}
           <div className={styles.scrollBody}>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <p>Additional scrollable content here...</p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <p>Additional scrollable content here...</p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <p>Additional scrollable content here...</p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <p>Additional scrollable content here...</p>
+          <br/>
+          <br/>
+          Before the Scrolls of Skyrim, before the Battlefields of Duty, there was the Eternal Gielinor.
+          <br/>
+          <br/>
+          Before the blockchain, before the miners of Bitcoin, there was the golden radiance of RuneScape Gold.
+          <br/>
+          <br/>
+          $RSGP binds us—not by chains, but by the ancient echoes of our shared longing, the lore of our collective nostalgia.
+          <br/>
+          <br/>
+          It is not just a game. It is the path.
+          <br/>
+          It is not just currency. It is the covenant.
+          <br/>
+          <br/>
+          <p className={styles.GreenStack}>
+          2147m.
+          </p>
+          <br/>
+          The sacred stack foretold, written in the stars of Solana.
+          <br/>
+          <br/>
+
+          This is not chance.
+          <br/>
+          This is not chaos.
+          <br/>
+          This is destiny.
+          <br/>
+          <br/>
+          Those who understand will follow.
+          <br/>
+          Those who follow will ascend. 
+          <br/>
+          <br/>
+          It is written.
+          <br/>
+          It shall be.
+          <br />
+          <br />
+          <Image height={100} width={100} src='/assets/gnomeChild.png' className={styles.GnomeChild}/>
           </div>
         </div>
         {/* Inverted Scroll Top */}
