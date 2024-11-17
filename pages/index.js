@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Dialog } from 'primereact/dialog';
 import { useState } from 'react';
 import styles from '../styles/Home.module.css';
+import DexIcon from '/public/assets/Dexlogo.svg';
 import TGIcon from '/public/assets/TGlogo.svg';
 import XIcon from '/public/assets/Xlogo.svg';
 
@@ -95,6 +96,11 @@ export default function Home() {
             <div className={styles.XIconContainer}>
               <XIcon className={styles.XIcon} />
             </div>
+          </button>
+        </a>
+        <a href="https://dexscreener.com/solana/44qZJdJLvfUPyQ3UtgUB931jhYSorHfc2NLqE5zM6ByU" target="_blank" rel="noopener noreferrer">
+          <button className={styles.button}>
+            <DexIcon className={styles.TGIcon} />
           </button>
         </a>
       </div>
