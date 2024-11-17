@@ -18,9 +18,7 @@ export default function Home() {
       <div className={styles.Slogan}>Destined for 2.147B MCAP since 2001</div>
       <div className={styles.Address}>3oU51xU5yz7wKLRMMKAqvVVpzfuvXLKUScqyht8q2PKd</div>
       <div className={styles.VerticalButtonsContainer}>
-        <button className={`${styles.button}  ${styles.VisionButton}`} onClick={() => setVisible(true)}>Read about the vision</button>
-        <button className={`${styles.button}  ${styles.VisionButton}`} onClick={() => setVisible(true)}>How to buy?</button>
-        <button className={`${styles.button}  ${styles.VisionButton}`} onClick={() => setVisible(true)}>Project Roadmap</button>
+        <button className={`${styles.button}  ${styles.VisionButton}`} onClick={() => setVisible(true)}>The Prophecy</button>
       </div>
       <Dialog visible={visible} className={styles.Dialog} onHide={() => setVisible(false)}>
         
