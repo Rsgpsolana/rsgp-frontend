@@ -12,6 +12,10 @@ body {
   justify-content: center;
 }
 
+html {
+  background-color: black;
+}
+
 html::before {
   content: '';
   position: absolute;
