@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Dialog } from 'primereact/dialog';
 import { useState } from 'react';
 import styles from '../styles/Home.module.css';
+import VideoBackground from "/components/VideoBackground";
 import DexIcon from '/public/assets/Dexlogo.svg';
 import TGIcon from '/public/assets/TGlogo.svg';
 import XIcon from '/public/assets/Xlogo.svg';
@@ -10,7 +11,8 @@ import XIcon from '/public/assets/Xlogo.svg';
 export default function Home() {
   const [visible, setVisible] = useState(false)
   return (
-    <div className={styles.container}>
+    <> <VideoBackground src="/assets/prophecy.mp4" opacity={0.3} />
+      <div className={styles.container}>
       <div className={styles.SplineContainer}>
       <Spline
         scene="https://prod.spline.design/4hP5r0iNFz0e7Vwr/scene.splinecode" className={styles.Spline}
@@ -97,5 +99,6 @@ export default function Home() {
         </a>
       </div>
     </div>
+    </>
   );
 }
