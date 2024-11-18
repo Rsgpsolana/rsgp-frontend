@@ -25,7 +25,7 @@ export default class MemeDropScene extends Phaser.Scene {
     const randomNumber = Phaser.Math.Between(1, 33); // Generate a random number between 1 and 33
     const meme = this.physics.add.image(x, y, randomNumber.toString()); // Use the random number as the key
     
-    meme.setScale(0.5);
+    meme.setScale(0.35);
     meme.setBounce(0.8); // Add bounce effect
     meme.setCollideWorldBounds(true); // Ensure memes don't leave the screen
   }
