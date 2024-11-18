@@ -1,7 +1,7 @@
 import Spline from '@splinetool/react-spline';
 import Image from 'next/image';
 import { Dialog } from 'primereact/dialog';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from '../styles/Home.module.css';
 import VideoBackground from "/components/VideoBackground";
 import DexIcon from '/public/assets/Dexlogo.svg';
@@ -10,9 +10,66 @@ import XIcon from '/public/assets/Xlogo.svg';
 
 export default function Home() {
   const [visible, setVisible] = useState(false)
+  const memeSceneRef = useRef(null); 
+  const phaserContainerRef = useRef(null);
+
+  const dropMeme = () => {
+    if (memeSceneRef.current) {
+      memeSceneRef.current.dropMeme(); // Call the dropMeme method
+    }
+  };
+
+  useEffect(() => {
+    // Dynamically import Phaser and MemeDropScene
+    Promise.all([
+      import('phaser'),
+      import('../components/MemeDropScene'),
+    ]).then(([Phaser, { default: MemeDropScene }]) => {
+      const config = {
+        parent: phaserContainerRef.current,
+        type: Phaser.AUTO,
+        width: window.innerWidth,
+        height: window.innerHeight,
+        scale: {
+          mode: Phaser.Scale.FIT,
+          autoCenter: Phaser.Scale.CENTER_BOTH,
+      },
+        transparent: true,
+        physics: {
+          default: 'arcade',
+          arcade: {
+            gravity: { y: 300 },
+          },
+        },
+        scene: [
+          class extends MemeDropScene {
+            create() {
+              super.create();
+              memeSceneRef.current = this; // Store the scene instance
+            }
+          },
+        ],
+      };
+
+      const game = new Phaser.Game(config);
+
+      // Clean up Phaser instance on component unmount
+      return () => {
+        game.destroy(true);
+      };
+    });
+  }, []);
+
+
+
+
   return (
-    <> <VideoBackground src="/assets/prophecy.mp4" opacity={0.3} />
+    <> 
+    <div ref={phaserContainerRef} className={styles.phaserContainer}></div>
+    
+    <VideoBackground src="/assets/prophecy.mp4" opacity={0.3} />
       <div className={styles.container}>
+      
       <div className={styles.SplineContainer}>
       <Spline
         scene="https://prod.spline.design/4hP5r0iNFz0e7Vwr/scene.splinecode" className={styles.Spline}
@@ -24,7 +81,6 @@ export default function Home() {
         <button className={`${styles.button}  ${styles.VisionButton}`} onClick={() => setVisible(true)}>The Prophecy</button>
       </div>
       <Dialog visible={visible} className={styles.Dialog} onHide={() => setVisible(false)}>
-        
         {/* Scroll Top */}
         <img
             src="/assets/scrollTop.gif"
@@ -96,8 +152,11 @@ export default function Home() {
           <button className={styles.button}>
             <DexIcon className={styles.TGIcon} />
           </button>
-        </a>
+        </a>  
       </div>
+      <button className={styles.memeButton} onClick={dropMeme}>
+          Give me a goddam meme already
+        </button>
     </div>
     </>
   );
