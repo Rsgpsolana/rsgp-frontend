@@ -9,22 +9,36 @@ import TGIcon from '/public/assets/TGlogo.svg';
 import XIcon from '/public/assets/Xlogo.svg';
 
 export default function Home() {
-  const [visible, setVisible] = useState(false)
-  const memeSceneRef = useRef(null); 
+  const [visible, setVisible] = useState(false);
+  const [isLoadingMemes, setIsLoadingMemes] = useState(true);
+  const [dots, setDots] = useState('');
+  const memeSceneRef = useRef(null);
   const phaserContainerRef = useRef(null);
 
   const dropMeme = () => {
     if (memeSceneRef.current) {
-      memeSceneRef.current.dropMeme(); // Call the dropMeme method
+      memeSceneRef.current.dropMeme();
     }
   };
 
   useEffect(() => {
-    // Dynamically import Phaser and MemeDropScene
-    Promise.all([
-      import('phaser'),
-      import('../components/MemeDropScene'),
-    ]).then(([Phaser, { default: MemeDropScene }]) => {
+    let dotsInterval;
+
+    async function initGame() {
+      setIsLoadingMemes(true); // explicitly start loading state
+
+      dotsInterval = setInterval(() => {
+        setDots(prev => (prev.length >= 3 ? '' : prev + '.'));
+      }, 500);
+
+      const [{ default: Phaser }, { default: MemeDropScene }] = await Promise.all([
+        import('phaser'),
+        import('../components/MemeDropScene'),
+      ]);
+
+      const response = await fetch('/api/images');
+      const imageData = await response.json();
+
       const config = {
         parent: phaserContainerRef.current,
         type: Phaser.AUTO,
@@ -33,7 +47,7 @@ export default function Home() {
         scale: {
           mode: Phaser.Scale.FIT,
           autoCenter: Phaser.Scale.CENTER_BOTH,
-      },
+        },
         transparent: true,
         physics: {
           default: 'arcade',
@@ -41,35 +55,41 @@ export default function Home() {
             gravity: { y: 300 },
           },
         },
-        scene: [
-          class extends MemeDropScene {
-            create() {
-              super.create();
-              memeSceneRef.current = this; // Store the scene instance
-            }
-          },
-        ],
       };
 
       const game = new Phaser.Game(config);
 
-      // Clean up Phaser instance on component unmount
+      // Extend MemeDropScene to hook create() and access instance
+      class PatchedScene extends MemeDropScene {
+        create() {
+          super.create();
+          memeSceneRef.current = this;
+        }
+      }
+
+      game.scene.add('MemeDropScene', PatchedScene, true, { images: imageData });
+
+      setIsLoadingMemes(false);
+      clearInterval(dotsInterval);
+
       return () => {
         game.destroy(true);
+        clearInterval(dotsInterval);
       };
-    });
+    }
+
+    initGame();
   }, []);
 
 
 
-
   return (
-    <> 
+    <>
     <div ref={phaserContainerRef} className={styles.phaserContainer}></div>
-    
+
     <VideoBackground src="/assets/prophecy.mp4" opacity={0.3} />
       <div className={styles.container}>
-      
+
       <div className={styles.SplineContainer}>
       <Spline
         scene="https://prod.spline.design/4hP5r0iNFz0e7Vwr/scene.splinecode" className={styles.Spline}
@@ -88,7 +108,7 @@ export default function Home() {
             className={styles.scrollTop}
           />
         <div className={styles.scrollContainer}>
-          
+
 
           {/* Scroll Body */}
           <div className={styles.scrollBody}>
@@ -117,7 +137,7 @@ export default function Home() {
           <br/>
           Those who understand will follow.
           <br/>
-          Those who follow will ascend. 
+          Those who follow will ascend.
           <br/>
           <br/>
           It is written.
@@ -152,11 +172,15 @@ export default function Home() {
           <button className={styles.button}>
             <DexIcon className={styles.TGIcon} />
           </button>
-        </a>  
+        </a>
       </div>
-      <button className={styles.memeButton} onClick={dropMeme}>
-          Give me a goddam meme already
-        </button>
+      <button
+        className={styles.memeButton}
+        onClick={dropMeme}
+        disabled={isLoadingMemes}
+        style={{ opacity: isLoadingMemes ? 0.5 : 1, cursor: isLoadingMemes ? 'wait' : 'pointer' }}
+      >{isLoadingMemes ? `Beware, memes are coming${dots}` : 'Give me a goddam meme already'}
+      </button>
     </div>
     </>
   );

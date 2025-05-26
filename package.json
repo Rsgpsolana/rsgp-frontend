@@ -8,6 +8,7 @@
   "dependencies": {
     "@splinetool/react-spline": "^4.0.0",
     "@svgr/webpack": "^8.1.0",
+    "dropbox": "^10.34.0",
     "next": "latest",
     "phaser": "^3.87.0",
     "prime-react": "^1.0.0",
