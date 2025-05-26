@@ -20,7 +20,7 @@ export default class MemeDropScene extends Phaser.Scene {
   preload() {
     this.imageList.forEach((img, index) => {
       console.log(`Preloading: ${img.name}`);
-      let key = `meme_${index}`;
+      let key = `${index + 1}`;
       img.name = key;
       this.load.image(img.name, img.url);
     });
@@ -37,10 +37,8 @@ export default class MemeDropScene extends Phaser.Scene {
     const x = Phaser.Math.Between(0, window.innerWidth);
     const y = -100;
 
-    console.log('Available images:', this.imageList.map(i => i.name));
-
-    const randomImage = Phaser.Utils.Array.GetRandom(this.imageList);
-    const meme = this.physics.add.image(x, y, randomImage.name);
+    const randomNumber = Phaser.Math.Between(1, this.imageList.length);
+    const meme = this.physics.add.image(x, y, randomNumber.toString());
 
     const scale = Math.min(window.innerWidth / 800, 0.35);
     meme.setScale(scale);
