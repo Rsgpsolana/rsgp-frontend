@@ -2,7 +2,7 @@
 import { Dropbox } from 'dropbox';
 
 export default async function handler(req, res) {
-  const dbx = new Dropbox({ accessToken: process.env.DROPBOX_TOKEN});
+  const dbx = new Dropbox({ accessToken: process.env.NEXT_PUBLIC_DROPBOX_TOKEN});
 
   try {
     const folderPath = '/apps/rsgp2'; // if App Folder type, leave this as '' (root of app folder)

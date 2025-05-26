@@ -1,7 +1,7 @@
 // pages/api/image.js
 import { Dropbox } from 'dropbox';
 
-const dbx = new Dropbox({ accessToken: process.env.DROPBOX_TOKEN });
+const dbx = new Dropbox({ accessToken: process.env.NEXT_PUBLIC_DROPBOX_TOKEN });
 
 export default async function handler(req, res) {
   const { path } = req.query;
