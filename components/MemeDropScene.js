@@ -79,9 +79,10 @@ export default class MemeDropScene extends Phaser.Scene {
   prepareMeme(meme) {
     const scale = Math.min(window.innerWidth / 800, 0.35);
     meme.setScale(scale);
+    meme.setOrigin(0.5, 1);
     meme.setBounce(0.8);
     meme.setCollideWorldBounds(true);
-    meme.body.setSize(meme.width * scale, meme.height * scale, true);
+    meme.body.setSize(meme.width, meme.height, true);
     meme.body.setMaxVelocity(1000);
 
     meme.body.world.on('worldbounds', (body) => {

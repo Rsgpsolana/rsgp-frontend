@@ -223,7 +223,13 @@ export default function Home() {
           ? `Preparing memes...`
           : isLoadingMemes
           ? `Summoning...${dots}`
-          : 'Give me a goddam meme already'}
+          : 'Give me a meme already'}
+      </button>
+      <button
+        className={styles.memeButton}
+        src="https://t.me/+iLMg32jg5xFhYjg0"
+        onClick={() => window.open('https://t.me/+iLMg32jg5xFhYjg0', '_blank')}>
+        memes
       </button>
     </div>
     </>
