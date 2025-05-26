@@ -10,7 +10,9 @@ import XIcon from '/public/assets/Xlogo.svg';
 
 export default function Home() {
   const [visible, setVisible] = useState(false);
+  const [isFirstMemeReady, setIsFirstMemeReady] = useState(false);
   const [isLoadingMemes, setIsLoadingMemes] = useState(true);
+  const [loadingProgress, setLoadingProgress] = useState(0);
   const [dots, setDots] = useState('');
   const memeSceneRef = useRef(null);
   const phaserContainerRef = useRef(null);
@@ -67,7 +69,20 @@ export default function Home() {
         }
       }
 
-      game.scene.add('MemeDropScene', PatchedScene, true, { images: imageData });
+      game.scene.add('MemeDropScene', PatchedScene, true, {
+        images: imageData,
+        onProgress: (progress) => {
+          setLoadingProgress(Math.round(progress * 100));
+        },
+        onLoadStart: () => {
+          setIsLoadingMemes(true);
+        },
+        onLoadEnd: () => {
+          setIsLoadingMemes(false);
+          setIsFirstMemeReady(true);
+        },
+      });
+
 
       setIsLoadingMemes(false);
       clearInterval(dotsInterval);
@@ -174,12 +189,41 @@ export default function Home() {
           </button>
         </a>
       </div>
+      {isLoadingMemes && (
+      <div style={{ width: '100%', margin: '20px 0' }}>
+        <div style={{
+          height: '8px',
+          width: '100%',
+          background: '#333',
+          borderRadius: '4px',
+          overflow: 'hidden'
+        }}>
+          <div style={{
+            height: '100%',
+            width: `${loadingProgress}%`,
+            background: 'brown',
+            transition: 'width 0.2s ease'
+          }}></div>
+        </div>
+        <p style={{ textAlign: 'center', marginTop: '4px', color: '#ccc' }}>
+          Loading memes... {loadingProgress}%
+        </p>
+      </div>
+      )}
       <button
         className={styles.memeButton}
         onClick={dropMeme}
-        disabled={isLoadingMemes}
-        style={{ opacity: isLoadingMemes ? 0.5 : 1, cursor: isLoadingMemes ? 'wait' : 'pointer' }}
-      >{isLoadingMemes ? `Beware, memes are coming${dots}` : 'Give me a goddam meme already'}
+        disabled={!isFirstMemeReady || isLoadingMemes}
+        style={{
+          opacity: (!isFirstMemeReady || isLoadingMemes) ? 0.5 : 1,
+          cursor: (!isFirstMemeReady || isLoadingMemes) ? 'wait' : 'pointer',
+        }}
+      >
+        {!isFirstMemeReady
+          ? `Preparing memes...`
+          : isLoadingMemes
+          ? `Summoning...${dots}`
+          : 'Give me a goddam meme already'}
       </button>
     </div>
     </>
