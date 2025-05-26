@@ -161,7 +161,7 @@ export default function Home() {
             <TGIcon className={styles.TGIcon} />
           </button>
         </a>
-        <a href="https://x.com/rsgoldonsol" target="_blank" rel="noopener noreferrer">
+        <a href="https://x.com/rsgp_solana" target="_blank" rel="noopener noreferrer">
           <button className={styles.button}>
             <div className={styles.XIconContainer}>
               <XIcon className={styles.XIcon} />
