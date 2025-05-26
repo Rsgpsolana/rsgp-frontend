@@ -12,9 +12,10 @@ export default async function handler(req, res) {
     const file = await dbx.filesDownload({ path: decodeURIComponent(path) });
 
     res.setHeader('Content-Type', file.result.content_type || 'image/jpeg');
-    res.setHeader('Cache-Control', 'public, max-age=31536000');
+    res.setHeader('Cache-Control', 'no-store');
 
-    res.send(file.result.fileBinary);
+    const buffer = Buffer.from(file.result.fileBinary, 'binary');
+    res.status(200).end(buffer);
   } catch (err) {
     console.error(err);
     res.status(500).send('Failed to proxy image');
