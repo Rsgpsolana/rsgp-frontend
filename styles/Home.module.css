@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
- 
+
   justify-items: space-between;
 
 }
@@ -181,9 +181,9 @@
   .Dialog {
     min-width: 85vw
   }
-  
+
   .scrollTop {
-    top: 40rem;  
+    top: 40rem;
   }
 
   .container {
@@ -257,7 +257,11 @@
 .memeButton {
   color: white;
   padding: 10px 20px;
-  margin: 20px;
+  margin: 10px;
+}
+
+.memeButton:first-of-type {
+  margin-top: 20px;
 }
 
 .phaserContainer {

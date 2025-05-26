@@ -189,6 +189,12 @@ export default function Home() {
           </button>
         </a>
       </div>
+      <button
+        className={styles.memeButton}
+        src="https://jup.ag/swap/SOL-3oU51xU5yz7wKLRMMKAqvVVpzfuvXLKUScqyht8q2PKd"
+        onClick={() => window.open('https://jup.ag/swap/SOL-3oU51xU5yz7wKLRMMKAqvVVpzfuvXLKUScqyht8q2PKd', '_blank')}>
+        Buy $RSGP here
+      </button>
       {isLoadingMemes && (
       <div style={{ width: '100%', margin: '20px 0' }}>
         <div style={{
@@ -220,16 +226,16 @@ export default function Home() {
         }}
       >
         {!isFirstMemeReady
-          ? `Preparing memes...`
+          ? `Loading meme bomb...`
           : isLoadingMemes
-          ? `Summoning...${dots}`
-          : 'Give me a meme already'}
+          ? `Almost...${dots}`
+          : 'Meme bomb'}
       </button>
       <button
         className={styles.memeButton}
         src="https://t.me/+iLMg32jg5xFhYjg0"
         onClick={() => window.open('https://t.me/+iLMg32jg5xFhYjg0', '_blank')}>
-        memes
+        $RSGP Memes
       </button>
     </div>
     </>
